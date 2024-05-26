@@ -1,44 +1,39 @@
+#include "libmysyslog.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <time.h>
+#include <string.h>
 
-#define DEBUG 0
-#define INFO 1
-#define WARN 2
-#define ERROR 3
-#define CRITICAL 4
+static const char* log_levels[] = {"DEBUG", "INFO", "WARN", "ERROR", "CRITICAL"};
+
+int log_to_text(const char* msg, int level, const char* path);
+int log_to_json(const char* msg, int level, const char* path);
 
 int mysyslog(const char* msg, int level, int driver, int format, const char* path) {
-    // Реализация функции журналирования
-    FILE *log_file;
-    log_file = fopen(path, "a");
-    if (log_file == NULL) {
-        return -1;
-    }
-
-    time_t now;
-    time(&now);
-    char *timestamp = ctime(&now);
-    timestamp[strlen(timestamp) - 1] = '\0'; // Удаление символа новой строки
-
-    const char *level_str;
-    switch (level) {
-        case DEBUG: level_str = "DEBUG"; break;
-        case INFO: level_str = "INFO"; break;
-        case WARN: level_str = "WARN"; break;
-        case ERROR: level_str = "ERROR"; break;
-        case CRITICAL: level_str = "CRITICAL"; break;
-        default: level_str = "UNKNOWN"; break;
-    }
-
-    if (format == 0) {
-        // Текстовый формат
-        fprintf(log_file, "%s %s %d %s\n", timestamp, level_str, driver, msg);
+    if (driver == TEXT_DRIVER) {
+        return log_to_text(msg, level, path);
+    } else if (driver == JSON_DRIVER) {
+        return log_to_json(msg, level, path);
     } else {
-        // Формат JSON
-        fprintf(log_file, "{\"timestamp\":\"%s\",\"log_level\":\"%s\",\"driver\":%d,\"message\":\"%s\"}\n", timestamp, level_str, driver, msg);
+        return -1; // Unsupported driver
     }
-    fclose(log_file);
+}
+
+int log_to_text(const char* msg, int level, const char* path) {
+    FILE* file = fopen(path, "a");
+    if (!file) return -1;
+
+    time_t now = time(NULL);
+    fprintf(file, "%ld %s %s\n", now, log_levels[level], msg);
+    fclose(file);
+    return 0;
+}
+
+int log_to_json(const char* msg, int level, const char* path) {
+    FILE* file = fopen(path, "a");
+    if (!file) return -1;
+
+    time_t now = time(NULL);
+    fprintf(file, "{\"timestamp\":%ld,\"log_level\":\"%s\",\"message\":\"%s\"}\n", now, log_levels[level], msg);
+    fclose(file);
     return 0;
 }

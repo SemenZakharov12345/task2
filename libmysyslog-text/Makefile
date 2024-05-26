@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -fPIC
+CFLAGS = -Wall -Wextra -fPIC
 LDFLAGS = -shared
 TARGET = libmysyslog-text.so
 

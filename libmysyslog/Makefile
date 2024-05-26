@@ -1,16 +1,17 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -fPIC
+CFLAGS = -Wall -Werror -fPIC
+LDFLAGS = -shared
 TARGET = libmysyslog.so
 
 all: $(TARGET)
 
 $(TARGET): libmysyslog.o
-	$(CC) -shared -o $(TARGET) libmysyslog.o
+	$(CC) $(LDFLAGS) -o $@ $^
 
 libmysyslog.o: libmysyslog.c libmysyslog.h
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f $(TARGET) *.o
+	rm -f *.o $(TARGET)
 
 .PHONY: all clean

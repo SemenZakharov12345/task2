@@ -7,8 +7,8 @@ all: $(TARGET)
 $(TARGET): libmysyslog.o
 	$(CC) -shared -o $(TARGET) libmysyslog.o
 
-libmysyslog.o: libmysyslog.c
-	$(cc) $(CFLAGS) -c libmysyslog.c
+libmysyslog.o: libmysyslog.c libmysyslog.h
+	$(CC) $(CFLAGS) -c $<
 
 clean:
 	rm -f $(TARGET) *.o

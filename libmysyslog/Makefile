@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -fPIC
 LDFLAGS = -shared
-TARGET = libmysyslog.so
+TARGET = libmysyslog.so 
 
 all: $(TARGET)
-
+ 
 $(TARGET): libmysyslog.o
 	$(CC) $(LDFLAGS) -o $@ $^
 

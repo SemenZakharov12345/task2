@@ -3,4 +3,4 @@
 
 int log_to_text(const char* msg, int level, const char* path);
 
-#endif // LIBMYSYSLOG_TEXT_H
+#endif // LIBMYSYSLOG_TEXT_H 

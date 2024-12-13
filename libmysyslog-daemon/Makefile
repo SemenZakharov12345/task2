@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -I../libmysyslog
 LDFLAGS = -L../libmysyslog -lmysyslog
 TARGET = libmysyslog-daemon
 
-all: $(TARGET)
+all: $(TARGET) 
  
 $(TARGET): libmysyslog-daemon.o
 	$(CC) -o $(TARGET) libmysyslog-daemon.o $(LDFLAGS)

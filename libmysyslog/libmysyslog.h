@@ -1,6 +1,6 @@
 #ifndef LIBMYSYSLOG_H
 #define LIBMYSYSLOG_H
-
+ 
 enum LogLevel {
     DEBUG,
     INFO,

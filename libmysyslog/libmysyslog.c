@@ -17,7 +17,7 @@ int mysyslog(const char* msg, int level, int driver, int format, const char* pat
         return -1; // Unsupported driver
     }
 }
-
+ 
 int log_to_text(const char* msg, int level, const char* path) {
     FILE* file = fopen(path, "a");
     if (!file) return -1;

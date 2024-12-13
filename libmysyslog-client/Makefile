@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -I../libmysyslog
 LDFLAGS = -L../libmysyslog -lmysyslog
-TARGET = libmysyslog-client
+TARGET = libmysyslog-client 
 
 all: $(TARGET)
 $(TARGET): libmysyslog-client.o

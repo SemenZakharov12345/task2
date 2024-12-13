@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
                 break;
             case 'l':
                 level = atoi(optarg);
-                break;
+                break; 
             case 'd':
                 driver = atoi(optarg);
                 break;

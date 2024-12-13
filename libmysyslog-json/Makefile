@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -fPIC
 LDFLAGS = -shared
 TARGET = libmysyslog-json.so
-
+ 
 all: $(TARGET)
 
 $(TARGET): libmysyslog-json.o

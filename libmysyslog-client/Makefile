@@ -4,7 +4,6 @@ LDFLAGS = -L../libmysyslog -lmysyslog
 TARGET = libmysyslog-client
 
 all: $(TARGET)
-
 $(TARGET): libmysyslog-client.o
         $(CC) -o $(TARGET) libmysyslog-client.o $(LDFLAGS)
 

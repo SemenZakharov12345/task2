@@ -11,5 +11,5 @@ int log_to_text(const char* msg, int level, const char* path) {
     time_t now = time(NULL);
     fprintf(file, "%ld %s %s\n", now, log_levels[level], msg);
     fclose(file);
-    return 0;
+    return 0; 
 }

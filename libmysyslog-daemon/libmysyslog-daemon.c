@@ -11,7 +11,7 @@ static volatile int keepRunning = 1;
 void intHandler(int dummy) {
     keepRunning = 0;
 }
-
+ 
 void read_config(const char* path, int* level, int* driver, int* format, char* log_path) {
     FILE* file = fopen(path, "r");
     if (!file) {

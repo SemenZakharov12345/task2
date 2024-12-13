@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 #include "libmysyslog.h"
-
+ 
 void print_usage(const char* prog_name) {
     printf("Usage: %s -m <message> -l <log_level> -d <driver> -f <format> -p <path>\n", prog_name);
 }

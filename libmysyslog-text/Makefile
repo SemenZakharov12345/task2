@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -fPIC
 LDFLAGS = -shared
 TARGET = libmysyslog-text.so
 
-all: $(TARGET)
+all: $(TARGET) 
 
 $(TARGET): libmysyslog-text.o
 	$(CC) $(LDFLAGS) -o $@ $^

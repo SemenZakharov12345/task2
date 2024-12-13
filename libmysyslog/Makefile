@@ -6,7 +6,7 @@ TARGET = libmysyslog.so
 all: $(TARGET)
  
 $(TARGET): libmysyslog.o
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ 
 
 libmysyslog.o: libmysyslog.c libmysyslog.h
 	$(CC) $(CFLAGS) -c $<

@@ -10,4 +10,4 @@ clean:
                 $(MAKE) -C $$dir clean; \
         done
 
-.PHONY: all clean
+.PHONY: all clean 
